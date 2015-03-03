@@ -5,6 +5,11 @@ gem 'haml-rails', '~> 0.8.2'
 gem 'devise', '~> 3.4.1'
 gem 'mailcatcher', '~> 0.6.1', :group => :development
 
+gem 'omniauth', '~> 1.2.2'
+gem 'omniauth-twitter', '~> 1.1.0'
+gem 'omniauth-facebook', '~> 2.0.1'
+gem 'omniauth-linkedin', '~> 0.2.0'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record

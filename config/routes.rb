@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
+  get 'auth/:provider/callback', to: 'welcome#index'
+  get 'auth/twitter', as: 'twitter_auth'
+  get 'auth/facebook', as: 'facebook_auth'
+  get 'auth/linkedin', as: 'linkedin_auth'
 
   # if Rails.env.development?
   #   mount LetterOpenerWeb::Engine, at: "/letter_opener"
