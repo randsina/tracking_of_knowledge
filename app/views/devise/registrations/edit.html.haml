@@ -12,21 +12,23 @@
     .form-group
       = f.label :nickname
       = f.text_field :nickname, class: 'form-control'
-    .form-group
-      = f.label :role
-      = f.text_field :role, value: resource.role.name, disabled: true, class: 'form-control'
+    - if can? :manage, Role
+      .form-group
+        = f.label :role
+        = f.text_field :role, value: resource.role.name, disabled: true, class: 'form-control'
     .form-group
       = f.label :date_of_birth
       = f.date_field :date_of_birth, class: 'form-control'
     .form-group
       = f.label :address
       = f.text_field :address, class: 'form-control'
-    .form-group
-      = f.label :email
-      = f.email_field :email, disabled: true, class: 'form-control'
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
+    - if can? :manage, User, :email
+      .form-group
+        = f.label :email
+        = f.email_field :email, class: 'form-control'
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          %div
+            Currently waiting confirmation for: #{resource.unconfirmed_email}
     %fieldset
       %p Leave these fields blank if you don't want to change your password.
       .form-group

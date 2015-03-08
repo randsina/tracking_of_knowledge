@@ -19,7 +19,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # PUT /resource
   def update
-    # binding.pry
     params[:user][:role] = Role.find_by(name: params[:user][:role])
     super
   end
