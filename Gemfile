@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
+gem 'cancancan'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-facebook', '~> 2.0.1'
 gem 'omniauth-twitter', '~> 1.1.0'
