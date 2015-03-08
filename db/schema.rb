@@ -11,7 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307121250) do
+ActiveRecord::Schema.define(version: 20150308090215) do
+
+  create_table "roles", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -22,7 +28,6 @@ ActiveRecord::Schema.define(version: 20150307121250) do
     t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
@@ -32,9 +37,13 @@ ActiveRecord::Schema.define(version: 20150307121250) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    
     t.string   "provider"
     t.string   "uid"
+    t.integer  "role_id"
+    t.string   "surname"
+    t.string   "nickname"
+    t.date     "date_of_birth"
+    t.text     "address"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
