@@ -1,0 +1,24 @@
+- model_class = Technology
+.page-header
+  %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:name)
+      - if can? :manage, model_class
+        %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @technologies.each do |technology|
+      %tr
+        %td= link_to technology.name, technology_path(technology)
+        - if current_user.technologies.include? technology
+          %td= link_to 'Remove', '#', remote: true, class: 'btn btn-xs btn-warning'
+        - else
+          %td= link_to 'Add', '#', remote: true, class: 'btn btn-xs btn-primary'
+        - if can? :manage, technology
+          %td
+            = link_to t('.edit', :default => t("helpers.links.edit")), edit_technology_path(technology), :class => 'btn btn-default btn-xs'
+            = link_to t('.destroy', :default => t("helpers.links.destroy")), technology_path(technology), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs btn-danger'
+
+- if can? :create, @technologies
+  = link_to t('.new', :default => t("helpers.links.new")), new_technology_path, :class => 'btn btn-primary'

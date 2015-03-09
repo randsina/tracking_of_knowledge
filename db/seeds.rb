@@ -11,3 +11,6 @@ puts 'CREATED ADMIN USER: ' << user.email
 ['admin', 'user'].each do |role|
   Role.find_or_create_by({name: role})
 end
+
+technologies = Technology.create([{ name: 'Ruby' }, { name: 'HTML' },
+  { name: 'CSS' }, { name: 'JS' }])

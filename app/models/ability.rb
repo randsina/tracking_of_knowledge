@@ -10,6 +10,7 @@ class Ability
     if user.role.name == 'user'
       can :read, Role
       cannot :manage, User, email: true
+      can :read, Technology
     end
     #
     # The first argument to `can` is the action you are giving the user
