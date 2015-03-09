@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
+gem "therubyracer"
+gem "less-rails"
+gem "twitter-bootstrap-rails"
 gem 'cancancan'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-facebook', '~> 2.0.1'
