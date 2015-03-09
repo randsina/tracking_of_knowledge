@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def after_sign_in_path_for(resource)
-    session[:previous_url] || home_path
+    session[:previous_url] || technologies_path
   end
 end
