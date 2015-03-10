@@ -11,6 +11,7 @@ class Ability
       can :read, Role
       cannot :manage, User, email: true
       can :read, Technology
+      can :read, Theme
     end
     #
     # The first argument to `can` is the action you are giving the user

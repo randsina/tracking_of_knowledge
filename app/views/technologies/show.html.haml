@@ -6,6 +6,7 @@
   %strong= model_class.human_attribute_name(:name) + ':'
   %br
   = @technology.name
+= render @technology.themes
 
 
 = link_to t('.back', :default => t("helpers.links.back")), technologies_path, :class => 'btn btn-default'

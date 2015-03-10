@@ -1,0 +1,6 @@
+%p#notice= notice
+
+- if can? :update, @theme
+  = link_to 'Edit', edit_technology_theme_path(@theme.technology_id, @theme)
+  \|
+= link_to 'Back', technology_path(@theme.technology_id), class: 'btn btn-default'
