@@ -13,4 +13,33 @@ puts 'CREATED ADMIN USER: ' << user.email
 end
 
 technologies = Technology.create([{ name: 'Ruby' }, { name: 'HTML' },
-  { name: 'CSS' }, { name: 'JS' }])
+  { name: 'CSS' }, { name: 'JavaScript' }])
+
+Theme.create(name: 'Rails', technology_id: Technology.find_by(name: 'Ruby').id)
+Theme.create(name: 'OOP in Ruby', technology_id: Technology.find_by(name: 'Ruby').id)
+Theme.create(name: 'Syntax Ruby', technology_id: Technology.find_by(name: 'Ruby').id)
+Theme.create(name: 'TDD', technology_id: Technology.find_by(name: 'Ruby').id)
+Theme.create(name: 'BDD', technology_id: Technology.find_by(name: 'Ruby').id)
+
+Theme.create(name: 'SLIM', technology_id: Technology.find_by(name: 'HTML').id)
+Theme.create(name: 'HAML', technology_id: Technology.find_by(name: 'HTML').id)
+Theme.create(name: 'HTML5', technology_id: Technology.find_by(name: 'HTML').id)
+Theme.create(name: 'Forms', technology_id: Technology.find_by(name: 'HTML').id)
+
+Theme.create(name: 'CSS3', technology_id: Technology.find_by(name: 'CSS').id)
+Theme.create(name: 'SASS', technology_id: Technology.find_by(name: 'CSS').id)
+Theme.create(name: 'SCSS', technology_id: Technology.find_by(name: 'CSS').id)
+Theme.create(name: 'LESS', technology_id: Technology.find_by(name: 'CSS').id)
+Theme.create(name: 'Bootstrap', technology_id: Technology.find_by(name: 'CSS').id)
+Theme.create(name: 'Zurb Foundation', technology_id: Technology.find_by(name: 'CSS').id)
+
+Theme.create(name: 'ECMAScript', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'jQuery', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'extJS', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'CoffeeScript', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'TypeScript', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'AngularJS', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'EmberJS', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'ReactJS', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'MeteorJS', technology_id: Technology.find_by(name: 'JavaScript').id)
+Theme.create(name: 'Cross browser', technology_id: Technology.find_by(name: 'JavaScript').id)
