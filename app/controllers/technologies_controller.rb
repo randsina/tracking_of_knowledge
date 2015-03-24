@@ -43,7 +43,7 @@ class TechnologiesController < ApplicationController
     current_user.technologies << set_technology
     respond_to do |format|
       if @technology.update(technology_params)
-        format.html { redirect_to technologies_path, notice: "User's technology was successfully updated." }
+        format.html { redirect_to :back, notice: "User's technology was successfully updated." }
         format.json { render :show, status: :ok, location: @technology }
       else
         format.html { render :edit }
