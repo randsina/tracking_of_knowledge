@@ -13,9 +13,11 @@
         %tr
           %td= link_to technology.name, technology_path(technology)
           - if current_user.technologies.include? technology
-            %td= link_to 'Remove', '#', remote: true, class: 'btn btn-xs btn-warning'
+            %td
+              .progress
+                .progress-bar{role: 'progressbar', 'aria-valuemin' => '0', 'aria-valuemax' => '100',style: "width: 0%;"} 0%
           - else
-            %td= link_to 'Add', '#', remote: true, class: 'btn btn-xs btn-primary'
+            %td= link_to 'Add', technology_path(technology), method: :patch, class: 'btn btn-xs btn-primary'
           - if can? :manage, technology
             %td
               = link_to t('.edit', :default => t("helpers.links.edit")), edit_technology_path(technology), :class => 'btn btn-default btn-xs'

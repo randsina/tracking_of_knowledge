@@ -40,9 +40,10 @@ class TechnologiesController < ApplicationController
   # PATCH/PUT /technologies/1
   # PATCH/PUT /technologies/1.json
   def update
+    current_user.technologies << set_technology
     respond_to do |format|
       if @technology.update(technology_params)
-        format.html { redirect_to @technology, notice: 'Technology was successfully updated.' }
+        format.html { redirect_to :back, notice: "User's technology was successfully updated." }
         format.json { render :show, status: :ok, location: @technology }
       else
         format.html { render :edit }
@@ -69,6 +70,6 @@ class TechnologiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def technology_params
-      params[:technology]
+      params.permit(:id)
     end
 end
