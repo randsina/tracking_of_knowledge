@@ -5,7 +5,7 @@
   \|
 = link_to 'Back', technology_path(@theme.technology_id), class: 'btn btn-default'
 - if include_technology?(current_user, @theme)
-  = link_to 'Try to pass test', '#', class: 'btn btn-warning'
+  = link_to 'Try to pass test', attempt_path(@theme.survey_id), class: 'btn btn-warning'
 - else
   = label(:theme, :body, 'You should to add technology to pass test')
   = link_to 'Add', technology_path(@theme.technology_id), method: :patch, class: 'btn btn-xs btn-primary'

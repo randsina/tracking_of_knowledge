@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   end
 
   resources :surveys, only: [:index, :new, :create, :edit, :show, :update]
-  resources :attempts, only: [:new, :create]
+  resources :attempts, only: [:new, :create, :show]
 
   devise_for :users, :controllers => { omniauth_callbacks: "users/omniauth_callbacks",
     registrations: 'users/registrations' }

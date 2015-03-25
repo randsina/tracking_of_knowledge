@@ -7,7 +7,6 @@ class AttemptsController < ApplicationController
 
   def new
     @participant = current_user # you have to decide what to do here
-
     unless @survey.nil?
       @attempt = @survey.attempts.new
       @attempt.answers.build
@@ -19,9 +18,19 @@ class AttemptsController < ApplicationController
     @attempt.participant = current_user
 
     if @attempt.valid? && @attempt.save
-      redirect_to view_context.new_attempt, alert: I18n.t("attempts_controller.#{action_name}")
+      redirect_to technology_theme_path(Theme.find(@survey.theme_id).technology_id, @survey.theme_id), alert: I18n.t("attempts_controller.#{action_name}")
     else
       render :action => :new
+    end
+  end
+
+  def show
+    @participant = current_user # you have to decide what to do here
+    # binding.pry
+    @survey = Survey::Survey.find(params[:id])
+    unless @survey.nil?
+      @attempt = @survey.attempts.new
+      @attempt.answers.build
     end
   end
 

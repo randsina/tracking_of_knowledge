@@ -12,11 +12,13 @@
 
   <div class="field">
     <%= f.label :name %> <br />
-    <%= f.text_field :name %> <br />
-    <%= f.label :attempts_number %> <br />
-    <%= f.text_field :attempts_number %> <br />
-    <%= f.label :active %> <br />
-    <%= f.select :active, ["true", "false"] %>
+    <%= f.select(:name) do %>
+      <% Theme.where(survey_id: nil).each do |t| -%>
+        <%= content_tag(:option, t.name, value: t.name) %>
+      <% end %>
+    <% end %> <br />
+    <% f.label :active %> <br />
+    <% f.select :active, ["true"] %>
   </div>
 
   <div class="field">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324084718) do
+ActiveRecord::Schema.define(version: 20150325093710) do
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"
@@ -60,7 +60,10 @@ ActiveRecord::Schema.define(version: 20150324084718) do
     t.boolean  "active",          default: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "theme_id"
   end
+
+  add_index "survey_surveys", ["theme_id"], name: "index_survey_surveys_on_theme_id"
 
   create_table "technologies", force: :cascade do |t|
     t.string   "name"
@@ -81,8 +84,10 @@ ActiveRecord::Schema.define(version: 20150324084718) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "technology_id"
+    t.integer  "survey_id"
   end
 
+  add_index "themes", ["survey_id"], name: "index_themes_on_survey_id"
   add_index "themes", ["technology_id"], name: "index_themes_on_technology_id"
 
   create_table "users", force: :cascade do |t|

@@ -11,8 +11,14 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey::Survey.new(survey_params)
+    @theme = Theme.find_by(name: survey_params[:name])
+    env_params = survey_params
+    env_params[:theme_id] = @theme.id
+    @survey = Survey::Survey.new(env_params)
+
+
     if @survey.valid? && @survey.save
+      @theme.update_attributes(survey_id: @survey.id)
       default_redirect
     else
       render :action => :new
