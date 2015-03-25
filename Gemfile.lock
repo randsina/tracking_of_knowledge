@@ -342,6 +342,9 @@ GEM
       colorize (>= 0.7.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    survey (0.1)
+      rails (>= 3.2.6, < 5)
+      railties (>= 3.2.6, < 5)
     therubyracer (0.12.1)
       libv8 (~> 3.16.14.0)
       ref
@@ -424,6 +427,7 @@ DEPENDENCIES
   spring
   spring-commands-rspec
   sqlite3
+  survey (~> 0.1)
   therubyracer
   thin
   turbolinks
