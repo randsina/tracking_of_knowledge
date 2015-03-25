@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
+gem 'survey', '~> 0.1'
 gem 'paperclip', '~> 4.2.1'
 gem "therubyracer"
 gem "less-rails"
