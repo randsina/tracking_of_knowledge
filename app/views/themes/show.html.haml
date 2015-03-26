@@ -1,11 +1,16 @@
 %p#notice= notice
 
+%h3= @theme.name
 - if can? :update, @theme
   = link_to 'Edit', edit_technology_theme_path(@theme.technology_id, @theme)
   \|
 = link_to 'Back', technology_path(@theme.technology_id), class: 'btn btn-default'
 - if include_technology?(current_user, @theme)
   = link_to 'Try to pass test', attempt_path(@theme.survey_id), class: 'btn btn-warning'
+  %br
+  %br
+  .progress
+    .progress-bar.progress-bar-info{role: 'progressbar', 'aria-valuemin' => '0', 'aria-valuemax' => '100',style: "width: #{progress_theme(current_user, @theme.survey_id)};"}= progress_theme(current_user, @theme.survey_id)
 - else
   = label(:theme, :body, 'You should to add technology to pass test')
   = link_to 'Add', technology_path(@theme.technology_id), method: :patch, class: 'btn btn-xs btn-primary'

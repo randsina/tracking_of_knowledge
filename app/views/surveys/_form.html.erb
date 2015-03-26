@@ -13,7 +13,7 @@
   <div class="field">
     <%= f.label :name %> <br />
     <%= f.select(:name) do %>
-      <% Theme.where(survey_id: nil).each do |t| -%>
+      <% Theme.all.each do |t| -%>
         <%= content_tag(:option, t.name, value: t.name) %>
       <% end %>
     <% end %> <br />

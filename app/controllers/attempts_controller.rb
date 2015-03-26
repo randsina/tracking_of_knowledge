@@ -14,6 +14,7 @@ class AttemptsController < ApplicationController
   end
 
   def create
+    @survey = Survey::Survey.find(params[:survey_attempt][:survey_id])
     @attempt = @survey.attempts.new(attempt_params)
     @attempt.participant = current_user
 
