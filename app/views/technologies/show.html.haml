@@ -16,7 +16,7 @@
           %td
             .progress
               - if theme.survey_id
-                .progress-bar.progress-bar-info{role: 'progressbar', 'aria-valuemin' => '0', 'aria-valuemax' => '100',style: "width: #{progress_theme(current_user, theme.survey_id)};"}= progress_theme(current_user, theme.survey_id)
+                .progress-bar.progress-bar-info{role: 'progressbar', 'aria-valuemin' => '0', 'aria-valuemax' => '100',style: "width: #{progress_theme(current_user, theme.survey_id)}%;"}= "#{progress_theme(current_user, theme.survey_id)}%"
 
 = link_to t('.back', :default => t("helpers.links.back")), technologies_path, :class => 'btn btn-default'
 - if can? :update, @technology
