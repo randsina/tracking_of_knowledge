@@ -2,12 +2,21 @@
 .page-header
   %h1=t '.title', :default => model_class.model_name.human.titleize
 
-%p
-  %strong= model_class.human_attribute_name(:name) + ':'
-  %br
-  = @technology.name
-= render @technology.themes
-
+%table.table.table-striped
+  %thead
+    %tr
+      %th= model_class.human_attribute_name(:name)
+      - if can? :manage, model_class
+        %th=t '.actions', :default => t("helpers.actions")
+  %tbody
+    - @technology.themes.each do |theme|
+      %tr
+        %td= render theme
+        - if current_user.technologies.include?(@technology)
+          %td
+            .progress
+              - if theme.survey_id
+                .progress-bar.progress-bar-info{role: 'progressbar', 'aria-valuemin' => '0', 'aria-valuemax' => '100',style: "width: #{progress_theme(current_user, theme.survey_id)};"}= progress_theme(current_user, theme.survey_id)
 
 = link_to t('.back', :default => t("helpers.links.back")), technologies_path, :class => 'btn btn-default'
 - if can? :update, @technology
