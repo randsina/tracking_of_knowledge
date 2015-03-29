@@ -1,5 +1,6 @@
 class TechnologiesController < ApplicationController
   before_action :set_technology, only: [:show, :edit, :update, :destroy]
+  before_action :get_tags, only: [:index]
 
   # GET /technologies
   # GET /technologies.json
@@ -70,6 +71,10 @@ class TechnologiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def technology_params
-      params.permit(:id)
+      params.permit(:id, :name, :tag_list)
+    end
+
+    def get_tags
+      @tags = Technology.tag_counts_on(:tags).sort
     end
 end
