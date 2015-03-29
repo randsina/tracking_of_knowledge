@@ -2,6 +2,9 @@
   - model_class = Technology
   .page-header
     %h1=t '.title', :default => model_class.model_name.human.pluralize.titleize
+  .cloud
+    - tag_cloud(@tags, %w(css1 css2 css3 css4)) do |tag, css_class|
+      = link_to tag.name, tag_path(tag), :class => css_class
   %table.table.table-striped
     %thead
       %tr
@@ -12,8 +15,11 @@
       - @technologies.each do |technology|
         %tr
           %td= link_to technology.name, technology_path(technology), class: 'btn btn-success'
+          %td
+            - technology.tag_list.each do |tag|
+              = link_to tag, tag_path(Tag.find_by(name: tag).id)
           - if current_user.technologies.include? technology
-            %td
+            %td{:width => "60%;"}
               .progress
                 .progress-bar.progress-bar-info{role: 'progressbar', 'aria-valuemin' => '0', 'aria-valuemax' => '100',style: "width: #{progress_technology(current_user, technology)}%;"}= "#{progress_technology(current_user, technology)}%"
           - else

@@ -1,0 +1,10 @@
+%h1
+  Technologies Tagged as
+  = "#{@tag.name}"
+
+- if @technologies.count > 0
+  %ul
+  - @technologies.each do |technology|
+    %li= link_to technology.name, technology_path(technology)
+- else
+  %p This tag is not associated with any games.
