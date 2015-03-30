@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.0'
+gem 'elasticsearch-model', '~> 0.1.6'
+gem 'elasticsearch-rails', '~> 0.1.6'
 gem 'acts-as-taggable-on', '~> 3.5.0'
 gem 'survey', '~> 0.1'
 gem 'paperclip', '~> 4.2.1'

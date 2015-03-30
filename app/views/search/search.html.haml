@@ -1,0 +1,30 @@
+%h1 Search
+
+= form_for search_path, method: :get do |f|
+  %p
+    = f.label "Search for"
+    = text_field_tag :q, params[:q]
+    = submit_tag "Go", name: nil
+
+
+%ul
+  %h2 Technologies
+  - @technologies.each do |technology|
+    %li
+      %h4
+        = link_to technology.try(:highlight).try(:name) ? technology.highlight.name[0].html_safe : technology.name, technology_path(technology._id)
+
+%ul
+  %h2 Tags
+  - @tags.each do |tag|
+    %li
+      %h4
+        = link_to tag.try(:highlight).try(:name) ? tag.highlight.name[0].html_safe : tag.name, tag_path(tag._id)
+
+
+%ul
+  %h2 Themes
+  - @themes.each do |theme|
+    %li
+      %h4
+        = link_to theme.try(:highlight).try(:name) ? theme.highlight.name[0].html_safe : theme.name, technology_theme_path(theme.technology_id, theme._id)

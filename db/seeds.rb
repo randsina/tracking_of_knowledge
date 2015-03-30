@@ -15,6 +15,22 @@ end
 technologies = Technology.create([{ name: 'Ruby' }, { name: 'HTML' },
   { name: 'CSS' }, { name: 'JavaScript' }])
 
+t = Technology.find_by(name: 'Ruby')
+t.tag_list.add('OOP', 'script', 'functional', 'best', 'awesome', 'simple')
+t.save
+
+t = Technology.find_by(name: 'HTML')
+t.tag_list.add('simple')
+t.save
+
+t = Technology.find_by(name: 'CSS')
+t.tag_list.add('simple')
+t.save
+
+t = Technology.find_by(name: 'JavaScript')
+t.tag_list.add('OOP', 'script', 'functional')
+t.save
+
 Theme.create(name: 'Rails', technology_id: Technology.find_by(name: 'Ruby').id)
 Theme.create(name: 'OOP in Ruby', technology_id: Technology.find_by(name: 'Ruby').id)
 Theme.create(name: 'Syntax Ruby', technology_id: Technology.find_by(name: 'Ruby').id)
