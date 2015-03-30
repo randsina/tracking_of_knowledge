@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :technologies do
     resources :themes
   end
+  get 'search', to: 'search#search'
 
   resources :surveys, only: [:index, :new, :create, :edit, :show, :update]
   resources :attempts, only: [:new, :create, :show]
