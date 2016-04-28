@@ -5,12 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email
 
 ['admin', 'user'].each do |role|
   Role.find_or_create_by({name: role})
 end
+
+user = CreateAdminService.new.call
+puts 'CREATED ADMIN USER: ' << user.email
 
 technologies = Technology.create([{ name: 'Ruby' }, { name: 'HTML' },
   { name: 'CSS' }, { name: 'JavaScript' }])
